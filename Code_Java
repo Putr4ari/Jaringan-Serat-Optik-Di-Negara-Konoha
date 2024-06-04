@@ -23,3 +23,4 @@ public class SeratOptik {
             return Double.compare(this.weight, other.weight);
         }
     }
+    ashashashagsaydad
