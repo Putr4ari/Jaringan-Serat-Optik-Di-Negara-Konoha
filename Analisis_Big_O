@@ -1,0 +1,130 @@
+Pseudocode:
+
+Algoritma Jaringan Serat Optik Di Negara Konoha
+
+Deklarasi
+
+kota
+edge,edges
+weight
+NamaKota
+alamat
+AlamatKota
+Pengukuran
+MinimumJaringan
+kota1,kota2
+hubungan,Penghubung
+tempat1,tempat2
+loc1,loc2
+jarak
+data
+totalWeight
+count
+root1,root2
+cari
+int N,C,X,Y
+kotaPusat
+daerah
+city
+double result
+
+Algoritma
+
+while (true)
+	write("Masukan Jumlah Kota:")
+	int N <- scanner.nextInt()
+	if ( N == 0) break
+
+	List<kota> kotaPusat <- new ArrayList<>()
+	for int 1 <- 0 to repeat
+		NamaKota <- scanner.nextInt()
+		int C <- scanner.nextInt()
+		List<int[]> alamat = new ArrayList<>()
+		for int j <- to repeat
+			int x <- scanner.nextInt()
+			int y <- scanner.nextInt()
+			alamat <- new int[]{x, y}
+		end for
+	kotaPusat <- new kota(NamaKota, alamat)
+	end for
+	
+	List<String[]> Penghubung <- new ArrayList<>
+	for int 1 <- 0 to repeat
+		kota1 <- scanner.nextInt()
+		kota2 <- scanner.nextInt()
+		Penghubung <- new String[]{kota1, kota2}
+	end for
+	
+	result <- MinimumJaringan(N, kotaPusat, Penghubung)
+	write ("Panjang Minumum Kabel : %.1f\n", result)
+end while
+end scanner
+
+kota <- String NamaKota, List<int[]> alamat
+
+Edge <- String kota1, String kota2, double weight
+
+Pengukuran <- Math.pow(alamat1[0] - alamat2[0], 2) + Math.pow(alamat1[1] - alamat2[1], 2)
+
+List<Edge> edges <- new ArrayList<>()
+
+AlamatKota <- new Hashtable<>()
+
+data <- new Hashtable<>()
+
+for <kota> daerah <- kotaPusat
+	AlamatKota <- daerah(NamaKota,alamat)
+end for
+
+for string[] hubungan <- Penghubung
+	kota1 <- hubungan[0]
+	kota2 <- hubungan[1]
+	List<int[]> tempat1 <- AlamatKota(kota1)
+	List<int[]> tempat2 <- AlamatKota(kota2)
+
+	for int[]loc1 <- tempat1
+		for int[]loc2 <- tempat2
+			double jarak = pengukuran(loc1, loc2)
+			edges <- new Edge(kota1, kota2, jarak)
+		end for
+	end for
+end for
+
+MinimumJaringan <- N, List<kota> kotaPusat, List<String[]> Penghubung
+
+Collections.sort(edges)
+
+data = new Hashtable<>()
+
+for <kota> city <- KotaPusat
+	data <- city(NamaKota,NamaKota)
+end for
+
+totalWeight <- 0
+
+count <- o
+
+for <edge> edge <- edges
+	if (cabang(data,edge(kota1,kota2)))
+		totalWeight <- totalWeight + edge(weight)
+		if (count+1 == N-1) break
+	end if
+end for
+
+return totalWeight
+
+if (!kota(data(kota)))
+	data <- (kota,cari(data(kota)))
+end if
+
+return data(kota)
+
+root1 <- cari(data,kota1)
+root2 <- cari(data,kota2)
+
+if (!root1(root2))
+	data <-(root1,root2)
+	return true
+end if
+
+return false
