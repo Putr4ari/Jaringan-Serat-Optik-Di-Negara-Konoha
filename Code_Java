@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class SeratOptik {
+    static class kota {
+        String NamaKota;
+        List<int[]> alamat;
+        kota(String NamaKota, List<int[]> alamat) {
+            this.NamaKota = NamaKota;
+            this.alamat = alamat;
+        }
+    }
+
+    static class Edge implements Comparable<Edge> {
+        String kota1, kota2;
+        double weight;
+        Edge(String kota1, String kota2, double weight) {
+            this.kota1 = kota1;
+            this.kota2 = kota2;
+            this.weight = weight;
+        }
+
+        public int compareTo(Edge other) {
+            return Double.compare(this.weight, other.weight);
+        }
+    }
