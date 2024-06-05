@@ -23,3 +23,30 @@ public class SeratOptik {
             return Double.compare(this.weight, other.weight);
         }
     }
+    public static double Pengukuran(int[] alamat1, int[] alamat2) {
+        return Math.sqrt(Math.pow(alamat1[0] - alamat2[0], 2) + Math.pow(alamat1[1] - alamat2[1], 2));
+    }
+
+    public static double MinimumJaringan(int N, List<kota> kotaPusat, List<String[]> Penghubung) {
+        List<Edge> edges = new ArrayList<>();
+        Hashtable<String, List<int[]>> AlamatKota = new Hashtable<>();
+
+        for (kota daerah : kotaPusat) {
+            AlamatKota.put(daerah.NamaKota, daerah.alamat);
+        }
+
+        for (String[] hubungan : Penghubung) {
+            String kota1 = hubungan[0];
+            String kota2 = hubungan[1];
+            List<int[]> tempat1 = AlamatKota.get(kota1);
+            List<int[]> tempat2 = AlamatKota.get(kota2);
+
+            for (int[] loc1 : tempat1) {
+                for (int[] loc2 : tempat2) {
+                    double jarak = Pengukuran(loc1, loc2);
+                    edges.add(new Edge(kota1, kota2, jarak));
+                }
+            }
+        }
+
+        Collections.sort(edges);
