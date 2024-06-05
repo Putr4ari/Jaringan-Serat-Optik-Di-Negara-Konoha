@@ -47,6 +47,7 @@ while (true)
 		end for
 	kotaPusat <- new kota(NamaKota, alamat)
 	end for
+	//BIg O Notation = O(N)
 	
 	List<String[]> Penghubung <- new ArrayList<>
 	for int 1 <- 0 to repeat
@@ -89,10 +90,12 @@ for string[] hubungan <- Penghubung
 		end for
 	end for
 end for
+//Big O Notation= O((N−1)*C^2)
 
 MinimumJaringan <- N, List<kota> kotaPusat, List<String[]> Penghubung
 
 Collections.sort(edges)
+//Big O Notation = E=(N−1)*C^2
 
 data = new Hashtable<>()
 
@@ -110,6 +113,7 @@ for <edge> edge <- edges
 		if (count+1 == N-1) break
 	end if
 end for
+// Big O Notation = E=(N−1)*C^2
 
 return totalWeight
 
@@ -128,3 +132,4 @@ if (!root1(root2))
 end if
 
 return false
+Total Kompelksitas Big O Notation =O(N*C^2 log(N*C^2))
