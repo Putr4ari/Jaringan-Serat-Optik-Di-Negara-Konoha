@@ -4,6 +4,7 @@ public class SeratOptik {
     static class kota {
         String NamaKota;
         List<int[]> alamat;
+
         kota(String NamaKota, List<int[]> alamat) {
             this.NamaKota = NamaKota;
             this.alamat = alamat;
@@ -13,6 +14,7 @@ public class SeratOptik {
     static class Edge implements Comparable<Edge> {
         String kota1, kota2;
         double weight;
+
         Edge(String kota1, String kota2, double weight) {
             this.kota1 = kota1;
             this.kota2 = kota2;
@@ -23,6 +25,7 @@ public class SeratOptik {
             return Double.compare(this.weight, other.weight);
         }
     }
+
     public static double Pengukuran(int[] alamat1, int[] alamat2) {
         return Math.sqrt(Math.pow(alamat1[0] - alamat2[0], 2) + Math.pow(alamat1[1] - alamat2[1], 2));
     }
@@ -68,52 +71,3 @@ public class SeratOptik {
 
         return totalWeight;
     }
-
-    private static String cari(Hashtable<String, String> data, String kota) {
-        if (!kota.equals(data.get(kota))) {
-            data.put(kota, cari(data, data.get(kota)));
-        }
-        return data.get(kota);
-    }
-
-    private static boolean cabang(Hashtable<String, String> data, String kota1, String kota2) {
-        String root1 = cari(data, kota1);
-        String root2 = cari(data, kota2);
-        if (!root1.equals(root2)) {
-            data.put(root1, root2);
-            return true;
-        }
-        return false;
-public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("Masukan Jumlah Kota:");    
-            int N = scanner.nextInt();
-            if (N == 0) break;
-
-            List<kota> kotaPusat = new ArrayList<>();
-            for (int i = 0; i < N; i++) {
-                String NamaKota = scanner.next();
-                int C = scanner.nextInt();
-                List<int[]> alamat = new ArrayList<>();
-                for (int j = 0; j < C; j++) {
-                    int x = scanner.nextInt();
-                    int y = scanner.nextInt();
-                    alamat.add(new int[]{x, y});
-                }
-                kotaPusat.add(new kota(NamaKota, alamat));
-            }
-
-            List<String[]> Penghubung = new ArrayList<>();
-            for (int i = 0; i < N - 1; i++) {
-                String kota1 = scanner.next();
-                String kota2 = scanner.next();
-                Penghubung.add(new String[]{kota1, kota2});
-            }
-
-            double result = MinimumJaringan(N, kotaPusat, Penghubung);
-            System.out.printf("Panjang Minumum Kabel : %.1f\n", result);
-        }
-        scanner.close();
-    }
-}
